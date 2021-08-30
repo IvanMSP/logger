@@ -39,5 +39,5 @@ STATIC_PATHS = [
     ]
 
 EXTRA_PATH_METADATA = {
-    'favicon.ico': {'path': 'favicon.ico'},
+    'assets/favicon.ico': {'path': 'favicon.ico'},
 }
