@@ -5,11 +5,19 @@ AUTHOR = 'Ivan Lopez'
 SITENAME = 'Logger'
 SITEURL = ''
 
+# Theme
+THEME = '/home/bawbamgeek/Documents/Personal_proyects/LoggerMe/env/lib/python3.8/site-packages/pelican/themes/attila'
+HOME_COVER = 'https://images.pexels.com/photos/4688545/pexels-photo-4688545.jpeg'
+HEADER_COVERS_BY_TAG = {}
+HEADER_COVERS_BY_CATEGORY = {}
+HOME_COLOR = 'black'
+COLOR_SCHEME_CSS = 'darkly.css'
+
+# Content
 PATH = 'content'
-
 TIMEZONE = 'America/Mexico_City'
-
 DEFAULT_LANG = 'es'
+DEFAULT_PAGINATION = 10
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -22,17 +30,8 @@ AUTHOR_FEED_RSS = None
 SOCIAL = (('twitter', 'https://twitter.com/myprofile'),
         ('github', 'https://github.com/myprofile'),)
 
-DEFAULT_PAGINATION = 10
-
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
-
-THEME = '/home/bawbamgeek/Documents/Personal_proyects/LoggerMe/env/lib/python3.8/site-packages/pelican/themes/attila'
-HOME_COVER = 'https://images.pexels.com/photos/4688545/pexels-photo-4688545.jpeg'
-HEADER_COVERS_BY_TAG = {'food': '/images/food.png', 'drinks':'/images/orange-juice.png'}
-HEADER_COVERS_BY_CATEGORY = {'food': '/images/junkie-stuff.png'}
-HOME_COLOR = 'black'
-COLOR_SCHEME_CSS = 'darkly.css'
 
 STATIC_PATHS = [
     'assets',
@@ -40,4 +39,5 @@ STATIC_PATHS = [
 
 EXTRA_PATH_METADATA = {
     'assets/favicon.ico': {'path': 'favicon.ico'},
+    'assets/CNAME': {'path': 'CNAME'},
 }
