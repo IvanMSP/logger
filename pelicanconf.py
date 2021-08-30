@@ -35,9 +35,9 @@ HOME_COLOR = 'black'
 COLOR_SCHEME_CSS = 'darkly.css'
 
 STATIC_PATHS = [
-    'extra',
+    'assets',
     ]
 
 EXTRA_PATH_METADATA = {
-    'extra/favicon.ico': {'path': 'favicon.ico'},
+    'favicon.ico': {'path': 'favicon.ico'},
 }
