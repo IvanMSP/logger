@@ -20,7 +20,7 @@ AUTHOR_FEED_RSS = None
 
 # Social widget
 SOCIAL = (('twitter', 'https://twitter.com/myprofile'),
-          ('github', 'https://github.com/myprofile'),)
+        ('github', 'https://github.com/myprofile'),)
 
 DEFAULT_PAGINATION = 10
 
