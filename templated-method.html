@@ -36,7 +36,7 @@
 
 
 
-    <meta name="description" content="El template method es un patron de diseño de comportamiento que define el esqueleto de un algoritmo en una clase base y permite que...">
+    <meta name="description" content="El template method es un patrón de diseño de comportamiento que define el esqueleto de un algoritmo en una clase base y permite que...">
 
     <meta name="author" content="ivan">
 
@@ -47,7 +47,7 @@
 <!-- Open Graph -->
 <meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="Logger"/>
 <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Template Method"/>
-<meta prefix="og: http://ogp.me/ns#" property="og:description" content="El template method es un patron de diseño de comportamiento que define el esqueleto de un algoritmo en una clase base y permite que..."/>
+<meta prefix="og: http://ogp.me/ns#" property="og:description" content="El template method es un patrón de diseño de comportamiento que define el esqueleto de un algoritmo en una clase base y permite que..."/>
 <meta prefix="og: http://ogp.me/ns#" property="og:locale" content="en_US"/>
 <meta prefix="og: http://ogp.me/ns#" property="og:url" content="./templated-method.html"/>
 <meta prefix="og: http://ogp.me/ns#" property="og:type" content="article"/>
@@ -65,7 +65,7 @@
 
         <meta name="twitter:image:src" content="./theme/images/post-bg.jpg">
 
-      <meta name="twitter:description" content="El template method es un patron de diseño de comportamiento que define el esqueleto de un algoritmo en una clase base y permite que...">
+      <meta name="twitter:description" content="El template method es un patrón de diseño de comportamiento que define el esqueleto de un algoritmo en una clase base y permite que...">
 
 <script type="application/ld+json">
 {
@@ -82,7 +82,7 @@
   },
   "image": "./theme/images/post-bg.jpg",
   "url": "./templated-method.html",
-  "description": "El template method es un patron de diseño de comportamiento que define el esqueleto de un algoritmo en una clase base y permite que..."
+  "description": "El template method es un patrón de diseño de comportamiento que define el esqueleto de un algoritmo en una clase base y permite que..."
 }
 </script>
 </head>
@@ -135,9 +135,130 @@
         <article class="post">
         <div class="inner">
             <section class="post-content">
-                <p>El template method es un patron de diseño de comportamiento que define el esqueleto de un algoritmo en una clase base y permite que otras subclases pueden sobreescribir sin modificar la estructura.</p>
-<p>Para poder entenderlo de una mejor manera, pongamos de ejemplo un web scraper, donde extraes información de distintos sitios web. Bien cuando empiezas tu proyecto, el alcance es solo para extraer información de un solo sitio web y hasta ahí todo cool con el código, ¿pero que pasa si nos piden agregar mas sitios web para poder extraer información?</p>
-<p>Mientras vas agregando el código para los demás sitios web, observas que tu código tiende a repetirse en algunas partes.</p>
+                <p>El template method es un patrón de diseño de comportamiento que define el esqueleto de un algoritmo en una clase base y permite que otras subclases puedan sobrescribir sin modificar la estructura.</p>
+<p><img alt="https://i.imgur.com/EM5pyis.png" src="https://i.imgur.com/EM5pyis.png"></p>
+<p>Como puedes ver en el diagrama, se define una clase abstracta donde se define la función para el <strong>template_method()</strong>, que es donde se declara el orden de los demás métodos [<strong><em>step_one(), step_two()...</em></strong>]  y a su vez se declaran los métodos de ese <strong>template_method()</strong>, estos métodos pueden tener una implementación o pueden ser implementados en una clase concreta.</p>
+<p>Las clases concretas [<strong><em>Concrete Class A, Concrete Class B...</em></strong>] pueden sobrescribir todos los métodos de <strong>Abstract Class</strong> pero no el <strong>template_method()</strong> .</p>
+<p>Si tienes dudas, con gusto puedes mandarme un DM a <a href="https://www.linkedin.com/in/ivanlopz/">LinkedIn</a> o <a href="https://twitter.com/BawbamGeek">Twitter</a>. 😉</p>
+<p>Estos días he estado estudiando como extraer información de diferentes sitios web y  tuve un problema donde no podía extraer la información de la manera que había investigado, entonces  tuve que investigar otras formas de como extraer información. </p>
+<p>Es donde me puse a analizar un poco y pude obtener lo siguiente:</p>
+<ul>
+<li>Extraer la información de un sitio web, lo hago en varios pasos en orden, es decir:<ul>
+<li>Recibe una url</li>
+<li>Realiza la request a la url</li>
+<li>Obtiene el response</li>
+<li>Del response obtiene el content</li>
+<li>Del content obtengo las clases que necesito</li>
+<li>La información que se obtiene la guardo en la db.</li>
+</ul>
+</li>
+<li>La manera de extraer información de diferentes sitios, puede que utilice diferentes herramientas pero podemos seguir los mismos pasos.</li>
+</ul>
+<p>Llegando a la conclusión de que podia implementar <strong>Template Method.</strong> Si te das cuenta el problema tiene todas las características para poder llevar una implementación del patrón.</p>
+<p><strong>Solución Temporal</strong>. </p>
+<p><img alt="https://i.imgur.com/h21T7oE.png" src="https://i.imgur.com/h21T7oE.png"></p>
+<p>Creando la clase abstracta en python:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># OS</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+<span class="k">class</span> <span class="nc">AbstractClass</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Clase abstracta para definir nuestro template method para hacer scrapping</span>
+<span class="sd">    de sitios webs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">template_method</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Estos son los pasos necesarios para scrappear un sitio web.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">make_request</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_content</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_data_from_classes</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_to_db</span><span class="p">()</span>
+
+    <span class="c1"># Métodos implementados en la clase abstracta</span>
+    <span class="c1"># (Se aplican para todos los sitios web)</span>
+    <span class="k">def</span> <span class="nf">save_to_db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Método para guardar la informacion en la base de datos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Guardando la informacion de: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Métodos abstractos que deben ser implementados en las subclases</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">make_request</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Método que realiza la petición a la url del sitio web.</span>
+<span class="sd">        recibe: url</span>
+<span class="sd">        retorna: response</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">get_content</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Método que obtiene el contenido de la url del sitio web.</span>
+<span class="sd">        recibe: response</span>
+<span class="sd">        retorna: content</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">get_data_from_classes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Método que obtiene la información solicitada.</span>
+<span class="sd">        recibe: lista de nombres de clases [&quot;name_product&quot;, &quot;price_product&quot;, &quot;discount&quot;] y content</span>
+<span class="sd">        retorna: lista de información obtenida, lista para ser almacenada en la db.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+</code></pre></div>
+
+<p>Clases Concretas que heredan la clase Abstracta</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TenisA</span><span class="p">(</span><span class="n">AbstractClass</span><span class="p">):</span>
+        <span class="n">USER_AGENT</span> <span class="o">=</span> <span class="s2">&quot;fake-agent&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">attributes</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">url</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attributes</span> <span class="o">=</span> <span class="n">attributes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">response</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">make_request</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">USER_AGENT</span><span class="p">})</span>
+            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;El status code de la request fue </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">response</span> <span class="o">=</span> <span class="n">response</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_content</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Obteniendo el contenido de la página de nike</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">response</span>
+
+    <span class="k">def</span> <span class="nf">get_data_from_classes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Buscando los atributos: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">attributes</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">content</span>
+</code></pre></div>
+
+<p>Para ejecutar nuestro template method debemos crear un cliente:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">client_code</span><span class="p">(</span><span class="n">abstract_class</span><span class="p">:</span> <span class="n">AbstractClass</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cliente encargado de ejecutar nuestro template_method.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">abstract_class</span><span class="o">.</span><span class="n">template_method</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Ejecutando el código:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ingresa la url: &quot;</span><span class="p">)</span>
+    <span class="n">attributes</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ingresa las clases a buscar en el sitio(separados por coma): &quot;</span><span class="p">)</span>
+    <span class="n">list_attributes</span> <span class="o">=</span> <span class="n">attributes</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+    <span class="n">client_code</span><span class="p">(</span><span class="n">TenisA</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">list_attributes</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Algo que hice para ir entendiendo como se iba ejecutando el código, es hacerlo linea por linea desde el depurador de visual code o con pudb. Esto me ayudo bastante a entenderlo de una mejor manera.</p>
             </section>
 
             <section class="post-info">
