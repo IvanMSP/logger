@@ -33,6 +33,18 @@ SOCIAL = (('twitter', 'https://twitter.com/BawbamGeek'),
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
+AUTHORS_BIO = {
+  "ivan": {
+    "name": "Ivan López",
+    "cover": "https://images.pexels.com/photos/4688545/pexels-photo-4688545.jpeg",
+    "image": "https://i.imgur.com/gQUjlR5.png",
+    "website": "https://bawbamgeek.com",
+    "twitter": "BawbamGeek",
+    "linkedin": "ivanlopz",
+    "location": "México",
+    "bio": "Backend Developer."
+  }
+}
 
 STATIC_PATHS = [
     'assets',
