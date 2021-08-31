@@ -36,7 +36,7 @@ SOCIAL = (('twitter', 'https://twitter.com/BawbamGeek'),
 AUTHORS_BIO = {
   "ivan": {
     "name": "Ivan López",
-    "cover": "https://images.pexels.com/photos/4688545/pexels-photo-4688545.jpeg",
+    "cover": "https://i.imgur.com/4HWzHSf.jpg",
     "image": "https://i.imgur.com/gQUjlR5.png",
     "website": "https://bawbamgeek.com",
     "twitter": "BawbamGeek",

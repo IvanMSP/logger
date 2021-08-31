@@ -1,10 +1,9 @@
 Title: Template Method
 Date: 2021-08-31 21:00
 Slug: templated-method
-Authors: Ivan Lopez
+Authors: ivan
 
 
-# Template Method
 
 El template method es un patron de diseño de comportamiento que define el esqueleto de un algoritmo en una clase base y permite que otras subclases pueden sobreescribir sin modificar la estructura.
 
