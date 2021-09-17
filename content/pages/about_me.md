@@ -1,4 +1,4 @@
-Title: ¡Hey soy Ivan! 👾
+Title: ¡Hey soy Ivan! 🐧
 Date: 2021-08-30 21:00
 Slug: bienvenido
 Authors: Ivan Lopez

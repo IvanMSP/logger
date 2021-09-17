@@ -99,7 +99,7 @@ Te comparto el [link](https://flake8.pycqa.org/en/latest/index.html) de la docum
 
 ### Conclusión
 
-Espero y que esta herramienta te ayude en mejorar tu productividad en tus proyectos y recuerda que si en tu equipo y/o empresa aún no lo usan, haz la propuesta de utilizarla. 😎
+Espero que esta herramienta te ayude en mejorar tu productividad en tus proyectos y recuerda que si en tu equipo y/o empresa aún no lo usan, haz la propuesta de utilizarla. 😎
 
 Si ya lo haz utilizado, seria genial que compartieras que hooks utilizas.  🥳
 
