@@ -59,7 +59,7 @@
 <meta prefix="og: http://ogp.me/ns#" property="article:section" content="misc"/>
 <meta prefix="og: http://ogp.me/ns#" property="article:tag" content="python"/>
 <meta prefix="og: http://ogp.me/ns#" property="article:tag" content="productividad"/>
-<meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://images.pexels.com/photos/7361775/pexels-photo-7361775.jpeg">
+<meta prefix="og: http://ogp.me/ns#" property="og:image" content="./theme/images/post-bg.jpg">
 
 <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -67,7 +67,7 @@
     <meta name="twitter:title" content="Pre-commit, un framework que te ayuda a ser mas productivo.">
     <meta name="twitter:url" content="./pre-commit-un-framework-que-te-ayudara-a-ser-mas-productivo.html">
 
-        <meta name="twitter:image:src" content="https://images.pexels.com/photos/7361775/pexels-photo-7361775.jpeg">
+        <meta name="twitter:image:src" content="./theme/images/post-bg.jpg">
 
       <meta name="twitter:description" content="Cuando estas desarrollando alguna feature o estas haciendo fixes de algún proyecto, la actividad principal es que funcione como se...">
 
@@ -84,7 +84,7 @@
     "name": "ivan",
     "url": "./author/ivan.html"
   },
-  "image": "https://images.pexels.com/photos/7361775/pexels-photo-7361775.jpeg",
+  "image": "./theme/images/post-bg.jpg",
   "url": "./pre-commit-un-framework-que-te-ayudara-a-ser-mas-productivo.html",
   "description": "Cuando estas desarrollando alguna feature o estas haciendo fixes de algún proyecto, la actividad principal es que funcione como se..."
 }
@@ -113,7 +113,7 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header id="post-header" class="has-cover">
+    <header id="post-header" >
       <div class="inner">
         <nav id="navigation">
             <span id="home-button" class="nav-button">
@@ -127,10 +127,9 @@
         <!-- TODO : Proper class for headline -->
         <span class="post-meta">
                 <a href="./author/ivan.html">Ivan López</a>
-            | <time datetime="lun 13 septiembre 2021">lun 13 septiembre 2021</time>
+            | <time datetime="Mon 13 September 2021">Mon 13 September 2021</time>
         </span>
         <!-- TODO : Modified check -->
-            <div class="post-cover cover" style="background-image: url('https://images.pexels.com/photos/7361775/pexels-photo-7361775.jpeg')">
       </div>
     </header>
 
@@ -143,7 +142,7 @@
         <div class="inner">
             <section class="post-content">
                 <p>Cuando estas desarrollando alguna feature o estas haciendo fixes de algún proyecto, la actividad principal es que funcione como se espera el feature o que se arregle la incidencia en la que estas trabajando, no en revisar si tu código esta bien formateado o si seguiste el pep8.</p>
-<p>Imagínate que te asignan un hotfix, lo trabajas y solucionas el problema, mandas tu pull request a tu lead, lo revisa y te rechaza por que tu código tiene espacios en blanco, no dejaste los espacios correspondientes en tus funciones o simplemente dejaste importaciones que no usaste. 😢😢 Y que esto te pase cada que mandas un pull request, a la larga, esto representaría tiempo perdido para ti, para tu lead y para tu empresa y/o producto. 🤔</p>
+<p>Imagínate que te asignan un hotfix, lo trabajas y solucionas el problema, mandas tu pull request a tu lead, lo revisa y te rechaza por que tu código tiene espacios en blanco, no dejaste los espacios correspondientes en tus funciones o simplemente dejaste importaciones que no usaste. 😢😢 Y que esto te pase cada que mandas un pull request, a la larga, esto representaría tiempo perdido para ti, para tu lead y para tu empresa y/o producto. 🤔 </p>
 <p>¡Hey! pero esta situación seria como un happy path, no en todos los lugares siguen estándares o tienen definidos sus procesos. Pero si estas en una situación parecida, atrévete a proponer  cosas que ayuden a mejorar sus procesos, ¡Tus compañeros te lo van agradecer! 🤗🥳</p>
 <p>Bien, pues <strong>pre-commit</strong> te ayudara a mejorar esta tarea, pero primero te explicare un poco acerca de él. Es un framework para manejar y  mantener <a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">hooks de git</a> que están escritos en diferentes lenguajes. En el cual, puedes configurar diferentes <a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">hooks</a> que te ayudaran con tareas como: <em>verificar si en tú código existen espacios en blanco, formatear tu código, ordenar tus imports, verificar si tus migraciones no han sido agregadas a git, si tienes keys privadas en tu proyecto, etc.</em> Puedes checar la lista de hooks disponibles en este <a href="https://pre-commit.com/hooks.html">link.</a></p>
 <p><img alt="https://i.imgur.com/8LTRN8T.png" src="https://i.imgur.com/8LTRN8T.png"></p>
