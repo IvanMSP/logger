@@ -7,7 +7,7 @@ SITEURL = ''
 
 # Theme
 # FAVICON = "favicon.ico"
-THEME = '/home/bawbamgeek/Documents/Personal_proyects/LoggerMe/env/lib/python3.8/site-packages/pelican/themes/attila'
+THEME = '/home/bawbamgeek/Documents/Personal_Projects/logger/env/lib/python3.9/site-packages/pelican/themes/attila'
 HOME_COVER = 'https://i.imgur.com/4HWzHSf.jpg'
 HEADER_COVERS_BY_TAG = {}
 HEADER_COVERS_BY_CATEGORY = {}
